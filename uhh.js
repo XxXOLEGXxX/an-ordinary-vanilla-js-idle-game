@@ -631,11 +631,12 @@ function loadGame(){
 }
 
 function deleteGame(){
-	let slot = prompt("Pick a slot to destroy")+"AOVJSIG"
+	let slot = prompt("Pick a slot to destroy")
 	if(slot=="currentSave"){
 		alert("NUH UH")
 		return
 	}
+	slot=slot+"AOVJSIG"
 	if(slot==gameData.currentSave){
 		alert("You can't do that.\n\nyou just can't")
 		return
@@ -645,17 +646,23 @@ function deleteGame(){
 }
 
 function renameGame(){
-	let slot = prompt("Please rename your save slot")+"AOVJSIG"
-	if(slot=="currentSave"){
-		alert("NUH UH")
-		return
-	}
+	let slot = prompt("Please rename your save slot")
 	if(slot==""){
 		alert("n-no thanks")
 		return
 	}
-	localStorage.removeItem(currentSlot);
-	currentSave = slot
+	slot=slot+"AOVJSIG"
+	if(slot=="currentSaveAOVJSIG"){
+		alert("NUH UH")
+		return
+	}
+	if(Object.getOwnPropertyNames(localStorage).includes(slot)){
+		alert("Try different name.")
+		return
+	}
+	localStorage.removeItem(localStorage["currentSave"]);
+	gameData.currentSave = slot
+	localStorage.currentSave = slot
 	localStorage.setItem(slot, btoa(JSON.stringify(gameData)))
 	nowDoItAgain()
 }
@@ -671,7 +678,8 @@ function newGame(){
 		return
 	}
 	gameData = getGameData()
-	currentSave = slot
+	gameData.currentSave = slot
+	localStorage.currentSave = slot
 	localStorage.setItem(slot, btoa(JSON.stringify(gameData)))
 	nowDoItAgain()
 }
