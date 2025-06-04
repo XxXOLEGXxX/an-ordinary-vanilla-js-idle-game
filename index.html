@@ -1,0 +1,63 @@
+<head>
+	<title>An Ordinary Vanilla JS Idle Game</title>
+	<link rel="icon" type="image/png" href="js.png">
+	<audio id="mainTheme" loop autoplay>
+		<source src="sounds/he_is_here.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="evilChase" loop autoplay>
+		<source src="sounds/he_is_near.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="noiseScream" loop autoplay>
+		<source src="sounds/hear_his_cries.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="lose" autoplay>
+		<source src="sounds/got_you.mp3" type="audio/mpeg">
+	</audio>
+	<script src="points.js"></script>
+	<script src="break_eternity.js"></script>
+	<script src="uhh.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body onload='deusExMachina()'>
+	<div id="magic"></div>
+	<div id="fps" style="pointer-events: none; position: absolute;">uhhh fps</div>
+	<div style="text-align: center; display: inline-block;" id="veryGoodTitle"></div>
+	<div class="work" id="tabMayhem"></div>
+	<div id="infoStuff" style="text-align: center;"></div>
+	<p class="pointInfo">
+		<span id="points"></span>
+		<span id="record"></span>
+		<br>
+		<br>
+		<span id="noise"></span>
+	</p>
+	<table style=" margin-left: auto; margin-right: auto;" id="upgrades"></table>
+	<table style=" margin-left: auto; margin-right: auto;" id="buyables"></table>
+	<table style=" margin-left: auto; margin-right: auto;" id="achievements"></table>
+	<button onclick="gameData.gameState = 'start'; nowDoItAgain()" style='position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%)' id="start">Start An Idle Game...</button>
+	<br>
+	<div class="absolute">
+		<span id="save" class="save marginTop"></span>
+		<button onclick="saveGame()" class="optionButton" id="optionButton0">Save</button>
+		<button onclick="loadGame()" class="optionButton" id="optionButton1">Load</button>
+		<button onclick="deleteGame()" class="optionButton" id="optionButton2">Delete</button>
+		<button onclick="exportData()" class="optionButton" id="optionButton3">Export</button>
+		<button onclick="importData()" class="optionButton" id="optionButton4">Import</button>
+		<br>
+		<button onclick="newGame()" class="optionButton" id="optionButton5">New</button>
+		<button onclick="renameGame()" class="optionButton" id="optionButton6">Rename</button>
+		<button onclick="hardReset()" class="optionButton" id="optionButton7">Hard Reset</button>
+		<button onclick="exportFile()" class="optionButton" id="optionButton8">Export file</button>
+		<button onclick="importFile()"class="optionButton" id="optionButton9">Import file</button>
+		<br>
+		<button onclick="quickSaveGame()" class="optionButton" id="optionButton10">Quick Save</button>
+		<button onclick="autoSaveGame()" class="autoSaveButton" id="optionButton11">Auto-Save: <span id="autosave" style="font-family: Impact"></span></button>
+	</div>
+	<div class="absolute" id="infoID"">
+		<button onclick="infoSwitch()" class="creditsButton" id="info">Info</button>
+	</div>
+	<div class="popOut" id="achievementPopUp"></div>
+	<div id="centerNoise" style="text-align: center; pointer-events: none; position: absolute;top: 50%; right: 50%; transform: translate(50%,-50%);">
+		<span id="NOISEISHERE" class="noise"></span>
+	</div>
+</body>

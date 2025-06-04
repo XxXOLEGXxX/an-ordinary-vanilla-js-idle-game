@@ -1,0 +1,228 @@
+h1,h2,h3,h4,h5,span,p {
+	font-family: Comic Sans MS;
+}
+
+h5 {
+	margin: 0px;
+}
+
+.pointInfo {
+	position: absolute;
+	text-align: center;
+	margin: 5px;
+    width: 100%;
+}
+
+.points {
+	font-size: 20px;
+	text-shadow: 0px 0px 5px black;
+}
+
+.evilPoints {
+	font-size: 20px;
+	text-shadow: 0px 0px 5px red;
+}
+
+.noise {
+	font-size: 40px;
+	text-shadow: 0px 0px 5px yellow;
+}
+
+.save {
+	position: absolute;
+	inline-size: 600px;
+}
+
+.marginTop {
+	margin-top: 175px;
+}
+
+.upgrade {
+	min-height: 150px;
+	min-width: 150px;
+	border:2px solid;
+	border-radius: 10px;
+	background-color:lightgreen;
+	overflow-wrap: break-word;
+	inline-size: 150px;
+	text-align: center;
+}
+
+.buyable {
+	min-height: 150px;
+	min-width: 250px;
+	border:2px solid;
+	border-radius: 10px;
+	background-color:lightgreen;
+	overflow-wrap: break-word;
+	inline-size: 250px;
+	text-align: center;
+}
+
+.achievement {
+	height: 100px;
+	width: 100px;
+	border:2px solid;
+	border-radius: 10px;
+	text-align: center;
+	overflow-wrap: break-word;
+}
+
+.popOut {
+	position: absolute;
+	height: 100px;
+	width: 500px;
+	border:2px solid;
+	border-top-right-radius: 50px;
+	border-bottom-right-radius: 50px;
+	text-align: center;
+	overflow-wrap: break-word;
+}
+
+.achievement .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	bottom: 130%;
+	left: 50%;
+	margin-left: -100px;
+	border:2px solid;
+	background-color: white;
+	color: black;
+	box-shadow: inset 0px 60px 60px -60px rgba(0,0,0,0.5), inset 0px 0px 10px rgba(0,0,0,0.5);
+	text-shadow: 0px 0px 0px rgba(0,0,0,0);
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	 
+	  /* Position the tooltip text - see examples below! */
+	position: absolute;
+	z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.achievement:hover .tooltiptext {
+  visibility: visible;
+}
+
+.achievement .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.work {
+  text-align:center;
+}
+
+#tab {
+	font-family: Impact;
+	background-color: white;
+	font-size: 20px;
+	height: 30px;
+	width: 250px;
+	border: 2px solid;
+	border-color: rgba(0,0,0,0.5);
+	border-radius: 10px;
+	transition: 0.5s;
+}
+#tab:hover {
+	transform: scale(1.2);
+}
+
+#mainTab {
+	font-family: Impact;
+	box-shadow: 0px 0px 10px black, inset 0px 0px 5px black;
+	background-color: white;
+	font-size: 20px;
+	height: 30px;
+	width: 100px;
+	border: 2px solid;
+	border-color: rgba(0,0,0,0.5);
+	border-radius: 20px;
+	transition: 0.5s;
+}
+
+#mainTab:hover {
+	transform: scale(1.2)
+}
+
+#metaTab {
+	font-family: Impact;
+	background: linear-gradient(to right, darkred, purple);
+	box-shadow: -10px 0px 10px red, 0px 0px 20px black, inset 0px 0px 5px black, 10px 0px 10px purple;
+	text-shadow: 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white;
+	font-size: 20px;
+	color: black;
+	height: 30px;
+	width: 100px;
+	border: 2px solid;
+	border-color: rgba(0,0,0,0.5);
+	border-radius: 20px;
+	transition: 0.5s;
+}
+
+#metaTab:hover {
+	transform: scale(1.2);
+}
+
+#treeTab {
+	font-family: Impact;
+	box-shadow: 0px 0px 10px black;
+	background-color: lime;
+	color: rgba(0,0,0,0.5);
+	font-size: 20px;
+	height: 30px;
+	width: 100px;
+	border: 2px solid;
+	border-color: rgba(0,0,0,0.125);
+	border-radius: 20px;
+	transition: 0.5s;
+}
+
+#metaTab:hover {
+	transform: scale(1.2);
+}
+
+.absolute {
+	position: absolute;
+    bottom: 0px;
+}
+
+.optionButton {
+	font-family: Impact;
+	font-size: 20px;
+	margin-left: 0px;
+	height: 30px;
+	width: 120px;
+	border: 2px solid;
+	border-color: rgba(0,0,0,0.5);
+	border-radius: 3px;
+	position: absolute;
+}
+
+.creditsButton {
+	font-family: Impact;
+	font-size: 20px;
+	height: 30px;
+	width: 120px;
+	border: 2px solid;
+	border-color: rgba(0,0,0,0.5);
+	border-radius: 3px;
+	position: absolute;
+}
+
+.autoSaveButton {
+	font-family: Impact;
+	font-size: 20px;
+	margin-left: 0px;
+	height: 30px;
+	width: 240px;
+	border: 2px solid;
+	border-color: rgba(0,0,0,0.5);
+	border-radius: 3px;
+}
