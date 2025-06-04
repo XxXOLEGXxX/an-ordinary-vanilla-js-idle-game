@@ -549,12 +549,12 @@ function gameTick(){
 	document.getElementById("centerNoise").style.right = Decimal.mul(Math.random()-0.5, gameData.timer.lte(0)?gameData.timer.abs().div(20):0).add(50)+"%"
 	document.body.style["background-color"] = gameData.timer.lte(0)?`rgb(${gameData.timer.abs().add(195).mul(gameData.deNoidoPoints.add(gameData.points).div(gameData.points))},${gameData.timer.abs().add(195).mul(new Decimal(2).sub(gameData.deNoidoPoints.add(gameData.points).div(gameData.points)))},${Decimal.sub(195, gameData.timer.abs()).mul(new Decimal(2).sub(gameData.deNoidoPoints.add(gameData.points).div(gameData.points)))})`:"rgb(195,195,195)"
 	document.getElementById("save").innerHTML = `<span style="opacity: ${gameData.fileNotifTimer.div(2).max(0).toNumber()}">`+
-	(gameData.fileNotifShow=="save"?`SUCCESSFULLY SAVED ${gameData.currentSave}`:
-	gameData.fileNotifShow=="load"?`SUCCESSFULLY LOADED ${gameData.currentSave}`:
-	gameData.fileNotifShow=="quick save"?`SUCCESSFULLY QUICK SAVED TO ${gameData.currentSave}`:
-	gameData.fileNotifShow=="export"?`SUCCESSFULLY EXPORTED ${gameData.currentSave}`:
-	gameData.fileNotifShow=="import"?`SUCCESSFULLY IMPORTED TO ${gameData.currentSave}`:
-	gameData.fileNotifShow=="exportFile"?`SUCCESSFULLY EXPORTED ${gameData.currentSave} AS A FILE`:
+	(gameData.fileNotifShow=="save"?`SUCCESSFULLY SAVED ${gameData.currentSave.replace("AOVJSIG","")}`:
+	gameData.fileNotifShow=="load"?`SUCCESSFULLY LOADED ${gameData.currentSave.replace("AOVJSIG","")}`:
+	gameData.fileNotifShow=="quick save"?`SUCCESSFULLY QUICK SAVED TO ${gameData.currentSave.replace("AOVJSIG","")}`:
+	gameData.fileNotifShow=="export"?`SUCCESSFULLY EXPORTED ${gameData.currentSave.replace("AOVJSIG","")}`:
+	gameData.fileNotifShow=="import"?`SUCCESSFULLY IMPORTED TO ${gameData.currentSave.replace("AOVJSIG","")}`:
+	gameData.fileNotifShow=="exportFile"?`SUCCESSFULLY EXPORTED ${gameData.currentSave.replace("AOVJSIG","")} AS A FILE`:
 	gameData.fileNotifShow=="importFile"?`dude what the hell man... - X-iry`:"")+"</span><br><br><br><br><br>Available slots: "+evilMFSaveFile+"<br>Current slot: "+localStorage.currentSave.replace("AOVJSIG","")
 	document.getElementById("autosave").innerHTML = gameData.autosave.eq(0)?"OFF":numberFormat(gameData.autosave, 1)+" sec"
 	gameData.totalTreePoints = gameData.treePoints.add(gameData.wastedTreePoints)
