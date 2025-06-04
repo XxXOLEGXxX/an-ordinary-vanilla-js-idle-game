@@ -525,7 +525,7 @@ function gameTick(){
 	let mfSaveFile = Object.getOwnPropertyNames(localStorage)
 	let evilMFSaveFile = []
 	for(i=0;i<Object.getOwnPropertyNames(localStorage).length;i++){
-		if(Object.getOwnPropertyNames(localStorage)[i].includes("AOVJSIG")) evilMFSaveFile.push(Object.getOwnPropertyNames(localStorage)[i])
+		if(Object.getOwnPropertyNames(localStorage)[i].includes("AOVJSIG")) evilMFSaveFile.push(Object.getOwnPropertyNames(localStorage)[i].replace("AOVJSIG",""))
 	}
 	document.getElementById("infoStuff").innerHTML = gameData.tab == "Credits"?
 		`<br><h3 style='margin-top:0px;margin-bottom:0px;'>My Very Good Idle Game created by me!! (XxXOLEGXxX)</h3><h5>(also known as fuckyousegabutdeezcord in Discord)</h5><h3>De Noido (or De Novo) "made" by @donpolloenthusiast6</h3><h3>Idea inspired by Pizza Tower: Cheesy Chasedown The First Slice</h3><h3>Special thanks to TMT for making idle game making experience such a breeze<br>and TMT community for helping me out with learning JS</h3>`: gameData.tab == "Update Notes"?
