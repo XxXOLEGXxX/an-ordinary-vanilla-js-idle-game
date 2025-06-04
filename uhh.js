@@ -593,7 +593,7 @@ function nowDoItAgain(){
 
 
 function saveGame(){
-	let slot = prompt("Please name your save slot")+"AOVJSIG"
+	let slot = prompt("Please name your save slot")
 	if(slot=="" || slot==null){
 		alert("n-no thanks")
 		return
@@ -602,6 +602,7 @@ function saveGame(){
 		alert("NUH UH")
 		return
 	}
+	slot = slot +"AOVJSIG"
 	gameData.currentSave = slot
 	localStorage.currentSave = slot
 	localStorage.setItem(localStorage.currentSave, slot)
