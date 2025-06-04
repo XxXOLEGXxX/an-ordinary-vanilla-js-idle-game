@@ -466,23 +466,23 @@ function gameTick(){
 	document.getElementById("achievementPopUp").style["left"] = window.innerWidth-540+"px"
 	document.getElementById("achievementPopUp").style["border"] = "2px "+(gameData.achNotifShow?"solid":"hidden")
 	if(!gameData) gameData = getGameData()
+		if(gameData.timer.gt(0) && !document.getElementById("mainTheme").paused){
+		document.getElementById("mainTheme").pause()
+		document.getElementById("mainTheme").currentTime = 0 
+	}
+	if(gameData.timer.gt(0) && !document.getElementById("mainTheme").paused){
+		document.getElementById("noiseScream").pause()
+		document.getElementById("noiseScream").currentTime = 0 
+	}
+	if(gameData.timer.gt(0) && !document.getElementById("evilChase").paused){
+		document.getElementById("evilChase").pause()
+		document.getElementById("evilChase").currentTime = 0 
+		document.getElementById("evilChase").volume = 1
+	}
 	gameData.despair = gameData.despair.add(metaGain()[1].mul(timeThing))
 	if(gameData.gameState == "start") {
 		gameData.points = gameData.points.add(pointGain().mul(timeThing))
 		gameData.timer = gameData.timer.sub(timeThing)
-		if(gameData.timer.gt(0) && !document.getElementById("mainTheme").paused){
-			document.getElementById("mainTheme").pause()
-			document.getElementById("mainTheme").currentTime = 0 
-		}
-		if(gameData.timer.gt(0) && !document.getElementById("mainTheme").paused){
-			document.getElementById("noiseScream").pause()
-			document.getElementById("noiseScream").currentTime = 0 
-		}
-		if(gameData.timer.gt(0) && !document.getElementById("evilChase").paused){
-			document.getElementById("evilChase").pause()
-			document.getElementById("evilChase").currentTime = 0 
-			document.getElementById("evilChase").volume = 1
-		}
 		if(gameData.timer.lte(0)){
 			if(document.getElementById("mainTheme").paused) document.getElementById("mainTheme").play()
 			if(document.getElementById("mainTheme").currentTime == 0 && gameData.timer.lte(0)) document.getElementById("mainTheme").currentTime = gameData.timer.abs().toNumber()
@@ -522,6 +522,11 @@ function gameTick(){
 			}
 		}
 	}
+	let mfSaveFile = Object.getOwnPropertyNames(localStorage)
+	let evilMFSaveFile = []
+	for(i=0;i<Object.getOwnPropertyNames(localStorage).length;i++){
+		if(!Object.getOwnPropertyNames(localStorage)[i].includes("AOVJSIG")) evilMFSaveFile.push(Object.getOwnPropertyNames(localStorage)[i])
+	}
 	document.getElementById("infoStuff").innerHTML = gameData.tab == "Credits"?
 		`<br><h3 style='margin-top:0px;margin-bottom:0px;'>My Very Good Idle Game created by me!! (XxXOLEGXxX)</h3><h5>(also known as fuckyousegabutdeezcord in Discord)</h5><h3>De Noido (or De Novo) "made" by @donpolloenthusiast6</h3><h3>Idea inspired by Pizza Tower: Cheesy Chasedown The First Slice</h3><h3>Special thanks to TMT for making idle game making experience such a breeze<br>and TMT community for helping me out with learning JS</h3>`: gameData.tab == "Update Notes"?
 		`<h3>V0.1: The New Beginning</h3><span>Added Main and Meta content<br>Added VERY EVIL De Noido!11<br>There's not much else to say :p</span>`:""
@@ -550,7 +555,7 @@ function gameTick(){
 	gameData.fileNotifShow=="export"?`SUCCESSFULLY EXPORTED ${gameData.currentSave}`:
 	gameData.fileNotifShow=="import"?`SUCCESSFULLY IMPORTED TO ${gameData.currentSave}`:
 	gameData.fileNotifShow=="exportFile"?`SUCCESSFULLY EXPORTED ${gameData.currentSave} AS A FILE`:
-	gameData.fileNotifShow=="importFile"?`dude what the hell man... - X-iry`:"")+"</span><br><br><br><br><br>Available slots: "+Object.getOwnPropertyNames(localStorage).splice(1,Object.getOwnPropertyNames(localStorage).length)+"<br>Current slot: "+localStorage.currentSave
+	gameData.fileNotifShow=="importFile"?`dude what the hell man... - X-iry`:"")+"</span><br><br><br><br><br>Available slots: "+evilMFSaveFile+"<br>Current slot: "+localStorage.currentSave.replace("AOVJSIG","")
 	document.getElementById("autosave").innerHTML = gameData.autosave.eq(0)?"OFF":numberFormat(gameData.autosave, 1)+" sec"
 	gameData.totalTreePoints = gameData.treePoints.add(gameData.wastedTreePoints)
 	if(gameData.tab=="Upgrade Section"){
@@ -588,7 +593,7 @@ function nowDoItAgain(){
 
 
 function saveGame(){
-	let slot = prompt("Please name your save slot")
+	let slot = prompt("Please name your save slot")+"AOVJSIG"
 	if(slot=="" || slot==null){
 		alert("n-no thanks")
 		return
@@ -599,6 +604,7 @@ function saveGame(){
 	}
 	gameData.currentSave = slot
 	localStorage.currentSave = slot
+	localStorage.setItem(localStorage.currentSave, slot)
 	localStorage.setItem(slot, btoa(JSON.stringify(gameData)))
 	gameData.fileNotifShow = "save"
 	gameData.fileNotifTimer = new Decimal(3)
@@ -606,7 +612,7 @@ function saveGame(){
 }
 
 function loadGame(){
-	let slot = prompt("Please select your save slot")
+	let slot = prompt("Please select your save slot")+"AOVJSIG"
 	if(slot=="currentSave"){
 		alert("NUH UH")
 		return
@@ -625,7 +631,7 @@ function loadGame(){
 }
 
 function deleteGame(){
-	let slot = prompt("Pick a slot to destroy")
+	let slot = prompt("Pick a slot to destroy")+"AOVJSIG"
 	if(slot=="currentSave"){
 		alert("NUH UH")
 		return
@@ -639,7 +645,7 @@ function deleteGame(){
 }
 
 function renameGame(){
-	let slot = prompt("Please rename your save slot")
+	let slot = prompt("Please rename your save slot")+"AOVJSIG"
 	if(slot=="currentSave"){
 		alert("NUH UH")
 		return
@@ -655,8 +661,8 @@ function renameGame(){
 }
 
 function newGame(){
-	let slot = prompt("Please name your new save slot")
-	if(slot=="currentSave"){
+	let slot = prompt("Please name your new save slot")+"AOVJSIG"
+	if(slot=="currentSaveAOVJSIG"){
 		alert("NUH UH")
 		return
 	}
@@ -664,8 +670,8 @@ function newGame(){
 		alert("Try different name.")
 		return
 	}
-	currentSave = slot
 	gameData = getGameData()
+	currentSave = slot
 	localStorage.setItem(slot, btoa(JSON.stringify(gameData)))
 	nowDoItAgain()
 }
@@ -736,16 +742,34 @@ function importFile(){
 
 function hardReset(){
 	if(prompt("Are you sure?")=="yes"){
+		let needToRemoveMore = 0;
 		let workPLEASE = Object.getOwnPropertyNames(localStorage).length
-		while(localStorage.length !== 0){
-			for(i=0;i<workPLEASE;i++){
-				localStorage.removeItem(Object.getOwnPropertyNames(localStorage)[i]);
+		while(needToRemoveMore < 3){
+			for(i=0;i<workPLEASE;i++){ 
+				if(gameData.timer.gt(0) && !document.getElementById("mainTheme").paused){
+					document.getElementById("mainTheme").pause()
+					document.getElementById("mainTheme").currentTime = 0 
+				}
+				if(gameData.timer.gt(0) && !document.getElementById("mainTheme").paused){
+					document.getElementById("noiseScream").pause()
+					document.getElementById("noiseScream").currentTime = 0 
+				}
+				if(gameData.timer.gt(0) && !document.getElementById("evilChase").paused){
+					document.getElementById("evilChase").pause()
+					document.getElementById("evilChase").currentTime = 0 
+					document.getElementById("evilChase").volume = 1
+				}		
+				if(Object.getOwnPropertyNames(localStorage)[i].includes("AOVJSIG")){
+					localStorage.removeItem(Object.getOwnPropertyNames(localStorage)[i]);
+					needToRemoveMore = 0
+				}
 				workPLEASE = Object.getOwnPropertyNames(localStorage).length
+				needToRemoveMore = needToRemoveMore+1
 			}
 		}
 		gameData = getGameData()
-		localStorage.setItem("currentSave", "Default")
-		localStorage.setItem("Default", btoa(JSON.stringify(gameData)))
+		localStorage.setItem("currentSave", "DefaultAOVJSIG")
+		localStorage.setItem("DefaultAOVJSIG", btoa(JSON.stringify(gameData)))
 		window.location.reload()
 	}
 }
