@@ -13,6 +13,12 @@ h5 {
     width: 100%;
 }
 
+@font-face {
+  font-family: Impact, Impactoo;
+  font-weight: bold;
+  src: url(data:font/ttf;base64,AAEAAAAXAQ...);
+}
+
 .points {
 	font-size: 20px;
 	text-shadow: 0px 0px 5px black;
@@ -120,7 +126,7 @@ h5 {
 }
 
 #tab {
-	font-family: Impact;
+	font-family: Impact, Impacto;
 	background-color: white;
 	font-size: 20px;
 	height: 30px;
@@ -130,12 +136,18 @@ h5 {
 	border-radius: 10px;
 	transition: 0.5s;
 }
+
 #tab:hover {
 	transform: scale(1.2);
 }
 
+
+#tab:ontouchstart {
+	transform: scale(1.2);
+}
+
 #mainTab {
-	font-family: Impact;
+	font-family: Impact, Impacto;
 	box-shadow: 0px 0px 10px black, inset 0px 0px 5px black;
 	background-color: white;
 	font-size: 20px;
@@ -152,7 +164,7 @@ h5 {
 }
 
 #metaTab {
-	font-family: Impact;
+	font-family: Impact, Impacto;
 	background: linear-gradient(to right, darkred, purple);
 	box-shadow: -10px 0px 10px red, 0px 0px 20px black, inset 0px 0px 5px black, 10px 0px 10px purple;
 	text-shadow: 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white, 0px 0px 2px white;
@@ -171,7 +183,7 @@ h5 {
 }
 
 #treeTab {
-	font-family: Impact;
+	font-family: Impact, Impacto;
 	box-shadow: 0px 0px 10px black;
 	background-color: lime;
 	color: rgba(0,0,0,0.5);
@@ -194,7 +206,7 @@ h5 {
 }
 
 .optionButton {
-	font-family: Impact;
+	font-family: Impact, Impacto;
 	font-size: 20px;
 	margin-left: 0px;
 	height: 30px;
@@ -206,7 +218,7 @@ h5 {
 }
 
 .creditsButton {
-	font-family: Impact;
+	font-family: Impact, Impacto;
 	font-size: 20px;
 	height: 30px;
 	width: 120px;
@@ -217,7 +229,7 @@ h5 {
 }
 
 .autoSaveButton {
-	font-family: Impact;
+	font-family: Impact, Impacto;
 	font-size: 20px;
 	margin-left: 0px;
 	height: 30px;
