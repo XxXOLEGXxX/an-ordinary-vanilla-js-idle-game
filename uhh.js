@@ -729,7 +729,7 @@ function importData(){
 function exportFile(){
 	var element = document.createElement('a');
 	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(localStorage.getItem(gameData.currentSave)+"\n\n\nDon't lose it, buddy."));
-	element.setAttribute('download', 'save_file.txt');
+	element.setAttribute('download', localStorage["currentSave"]+'.txt');
 
 	element.style.display = 'none';
 	document.body.appendChild(element);
